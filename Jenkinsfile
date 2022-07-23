@@ -30,9 +30,9 @@ pipeline {
              steps {
                   echo 'Hello, Docker Deployment.'
                 sh '''
-                 (if  [ $(docker ps -a | grep mysql-my-movie-plan_angular-my-movie-plan | cut -d " " -f1) ]; then \
-                        echo $(docker rm -f mysql-my-movie-plan_angular-my-movie-plan); \
-                        echo "---------------- successfully removed mysql-my-movie-plan_angular-my-movie-plan ----------------"
+                 (if  [ $(docker ps -a | grep angular-my-movie-plan | cut -d " " -f1) ]; then \
+                        echo $(docker rm -f angular-my-movie-plan); \
+                        echo "---------------- successfully removed angular-my-movie-plan ----------------"
                      else \
                     echo OK; \
                  fi;);
