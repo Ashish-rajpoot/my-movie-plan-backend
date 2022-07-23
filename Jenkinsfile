@@ -28,7 +28,18 @@ pipeline {
 //         }
         stage('docker run') {
              steps {
+                  echo 'Hello, Docker Deployment.'
+                sh '''
+                 (if  [ $(docker ps -a | grep mysql-my-movie-plan_angular-my-movie-plan | cut -d " " -f1) ]; then \
+                        echo $(docker rm -f mysql-my-movie-plan_angular-my-movie-plan); \
+                        echo "---------------- successfully removed mysql-my-movie-plan_angular-my-movie-plan ----------------"
+                     else \
+                    echo OK; \
+                 fi;);
                  sh "docker run -p 5555:5555 --name my-movie-plan-backend --link mysql-my-movie-plan -d my-movie-plan-backend:1.0"
+            '''
+//             docker container run --restart always --name planmoviebackend -p 5555:5555 -d planmoviebackend
+//                  sh "docker run -p 5555:5555 --name my-movie-plan-backend --link mysql-my-movie-plan -d my-movie-plan-backend:1.0"
              }
         }
     }
