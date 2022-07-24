@@ -26,6 +26,23 @@ pipeline {
 //                 sh "docker build -t my-movie-plan ."
 //             }
 //         }
+
+stage('Docker Build Stage') {
+            steps {
+                echo '::::: Hello, Docker Build stage  :::::'
+                sh 'docker image build -t my-movie-plan-backend .'                              
+            }
+        } 
+        stage('Tag docker image'){
+            steps {
+                sh 'docker tag my-movie-plan-backend ashish142/my-movie-plan-backend:1.0.0'
+            }          
+        }
+        stage('Push docker image'){
+            steps {
+                sh 'sudo docker push ashish142/my-movie-plan-backend:1.0.0'
+            }          
+        }
         stage('docker run') {
              steps {
                   echo 'Hello, Docker Deployment.'
