@@ -8,7 +8,13 @@ VOLUME /tmp
 # EXPOSE 8080
 
 # Add the application's jar to the container
-ADD target/my-movie-plan-backend.jar my-movie-plan-backend.jar
+COPY ./target/my-movie-plan-backend.jar my-movie-plan-backend.jar
 
 # Run the jar file
-ENTRYPOINT ["java", "-jar", "my-movie-plan-backend"]
+CMD ["java", "-jar", "my-movie-plan-backend"]
+
+# # Add the application's jar to the container
+# ADD target/my-movie-plan-backend.jar my-movie-plan-backend.jar
+
+# # Run the jar file
+# ENTRYPOINT ["java", "-jar", "my-movie-plan-backend"]
