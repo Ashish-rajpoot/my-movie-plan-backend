@@ -36,7 +36,7 @@ pipeline {
                      else \
                     echo OK; \
                  fi;);
-                 sh "docker run -p 5555:5555 --name my-movie-plan-backend --link mysql-my-movie-plan -d my-movie-plan-backend:1.0"
+                 docker run -p 5555:5555 --name my-movie-plan-backend --link mysql-my-movie-plan -d my-movie-plan-backend:1.0
             '''
 //             docker container run --restart always --name planmoviebackend -p 5555:5555 -d planmoviebackend
 //                  sh "docker run -p 5555:5555 --name my-movie-plan-backend --link mysql-my-movie-plan -d my-movie-plan-backend:1.0"
